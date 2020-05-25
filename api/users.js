@@ -1,13 +1,11 @@
 var con = require('./db');
 
 exports.getTimeSpent = function (id) {
-    let time;
-
     return new Promise((resolve, reject) => {
         con.query("SELECT * FROM visitatore where id = '" + id + "'", function (err, result, fields) {
             if (err) reject(err);
 
-            time = visitTime(result[0].inizio_visita, result[0].fine_visita);
+            let time = visitTime(result[0].inizio_visita, result[0].fine_visita);
 
             resolve(time);
         });
@@ -16,12 +14,12 @@ exports.getTimeSpent = function (id) {
 
 exports.getPOIList = function (id) {
     return new Promise((resolve, reject) => {
-      con.query("SELECT * FROM posizione where user_id = '" + id + "'", function (err, result, fields) {
-          if (err) reject(err);
+            con.query("SELECT * FROM posizione where user_id = '" + id + "'", function (err, result, fields) {
+                if (err) reject(err);
 
-          resolve(result);
+                resolve(result);
+            });
     });
-});
 }
 
 exports.getPresentationList = function (id) {
@@ -35,21 +33,21 @@ exports.getPresentationList = function (id) {
 }
 
 exports.getAverageTime = function () {
-  return new Promise((resolve, reject) => {
-    con.query("SELECT * FROM visitatore", function (err, result, fields) {
-        if (err) reject(err);
+    return new Promise((resolve, reject) => {
+        con.query("SELECT * FROM visitatore", function (err, result, fields) {
+            if (err) reject(err);
         
-        let totalTime = 0;
+            let totalTime = 0;
           
-        for (let i = 0; i < result.length; i++) {
-          totalTime += toMinutes(visitTime(result[i].inizio_visita, result[i].fine_visita));
-        }
+            for (let i = 0; i < result.length; i++) {
+                totalTime += toMinutes(visitTime(result[i].inizio_visita, result[i].fine_visita));
+            }
 
-        let averageTime = toHours(parseInt(totalTime /  result.length));
+            let averageTime = toHours(parseInt(totalTime /  result.length));
 
-        resolve(averageTime);
+            resolve(averageTime);
+        });
     });
-});
 }
 
 //subtracts endtime - starttime, in order to get the time spent into the museum
