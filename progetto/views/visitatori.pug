@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1=title
+
+    form(method='POST', action='/visitatore/select')
+        select
+            each vis in visitatori
+                 option(value=vis.id) #{vis.id}
+        
+        input(type='submit', value='submit')

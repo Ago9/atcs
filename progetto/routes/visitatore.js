@@ -6,6 +6,11 @@ var visitatore = require("../controllers/visitatore.js");
     router.get("/", visitatore.findAll);
 
 // trova il singolo visitatore per id
-    router.get("/:visitatoreId", visitatore.findOne);
+//    router.get("/:visitatoreId", visitatore.findOne);
+
+    router.post("/select", function(req, res){
+        console.log(req.body)
+        res.send("ok")
+    });
 
 module.exports = router;
