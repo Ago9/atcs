@@ -1,7 +1,7 @@
 const sql = require("./dbconnection");
 
 var Visitatore = function(visitatore){
-    this.id =visitatore.id;
+    this.id = visitatore.id;
     this.gruppo = visitatore.gruppo;
     this.data = visitatore.data;
     this.ora_inzio = visitatore.ora_inzio;
@@ -9,15 +9,15 @@ var Visitatore = function(visitatore){
 }
 
 Visitatore.findById = (visitatoreId, result) => {
-    sql.query('SELECT * FROM visitatore WHERE id =' + visitatoreId), (err, res) => {
+    sql.query("SELECT * FROM visitatore WHERE id ='" + visitatoreId + "'"), (err, res) => {
         if(err){
-            console.log("error:", err)
+            //console.log("error:", err)
             result(err, null);
             return;
         }
 
         if(res.length){
-            console.log("visitatore trovato: ", res[0]);
+            //console.log("visitatore trovato: ", res[0]);
             result(null, res[0])
             return
         }
@@ -32,7 +32,7 @@ Visitatore.findAll = result => {
             return;
         }
 
-        console.log("visitatori:", res);
+        //console.log("visitatori:", res);
         result(null, res);
     })
 }

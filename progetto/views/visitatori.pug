@@ -4,7 +4,7 @@ block content
     h1=title
 
     form(method='POST', action='/visitatore/select')
-        select
+        select(name = 'visitors')
             each vis in visitatori
                  option(value=vis.id) #{vis.id}
         
