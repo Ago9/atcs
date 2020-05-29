@@ -22,7 +22,8 @@ router.get("/:id", visitatore.findOne);
 //});
 
 // gestisci la form di selezione del visitatore
-router.post("/select", visitatore.form);
+// router.post("/select", visitatore.form);
 
+router.post("/select", presentazione.findByUser);
 
 module.exports = router;
