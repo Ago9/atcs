@@ -1,7 +1,7 @@
-const Presentazione = require('../models/presentazione.js');
+const Posizione = require('../models/posizione.js');
 
 exports.findByUser = (req, res) => {
-    Presentazione.findByUser(req.body.visitors, (err, data) => {
+    Posizione.findByUser(req.body.visitors, (err, data) => {
         if(err)
             res.status(500).send({
                 message: 

@@ -16,7 +16,7 @@ exports.findAll = (req, res) => {
 }
 // gestisce la pagina visitatore/id. (non utilizzato) lo lascio perchè può tornare utile
 exports.findOne = (req, res) => {
-    Visitatore.findById(req.params.id, (err, data) => {
+    Visitatore.findById(req.body.visitors, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
