@@ -8,20 +8,20 @@ var Visitatore = function(visitatore){
     this.ora_fine = visitatore.ora_fine;
 }
 
-Visitatore.findById = (visitatoreId, result) => {
-    sql.query("SELECT * FROM visitatore WHERE id ='" + visitatoreId + "'"), (err, res) => {
+Visitatore.findById = (id, result) => {
+    sql.query("SELECT * FROM visitatore where id = ?", [id], (err, res) => {
         if(err){
-            //console.log("error:", err)
+            console.log("error:", err)
             result(err, null);
             return;
         }
 
         if(res.length){
-            //console.log("visitatore trovato: ", res[0]);
+            console.log("visitatore trovato: ", res[0]);
             result(null, res[0])
             return
         }
-    }
+    });
 };
 
 Visitatore.findAll = result => {
@@ -32,7 +32,7 @@ Visitatore.findAll = result => {
             return;
         }
 
-        //console.log("visitatori:", res);
+        console.log("visitatori:", res);
         result(null, res);
     })
 }
