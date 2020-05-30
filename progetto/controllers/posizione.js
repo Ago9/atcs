@@ -1,9 +1,7 @@
-const Presentazione = require('../models/presentazione.js');
+const Posizione = require('../models/posizione.js');
 
-
-// pare che basta usare il req.body. nome che dai al form per farlo andare 
 exports.findByUser = (req, res) => {
-    Presentazione.findByUser(req.body.visitors, (err, data) => {
+    Posizione.findByUser(req.body.visitors, (err, data) => {
         if(err)
             res.status(500).send({
                 message: 
