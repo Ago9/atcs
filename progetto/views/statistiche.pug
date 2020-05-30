@@ -1,19 +1,23 @@
 extends layout
 
 block content
+    
+    h1 Visitor <b>#{visitatori.id}</b> 
+    h3 part of group <b>#{visitatori.gruppo}</b> that visited in data: <b>#{visitatori.data}</b>
+    h3 total time spent into the museum: #{visitatori.visitTime}
 
     h1 presentazioni
     
     lu
         each pres in presentazioni
 
-            li  #{pres.nome}
+            li  #{pres.nome} #{pres.paused}
                  
     h1 posizione
 
     lu
         each poi in posizioni
 
-            li #{poi.id}  
+            li #{poi.id}  from <b>#{poi.inizio}</b> to <b>#{poi.fine}</b>
 
 

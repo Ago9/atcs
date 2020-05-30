@@ -1,4 +1,5 @@
 const sql = require("./dbconnection");
+var utils = require("./utils.js");
 
 var Visitatore = function(visitatore){
     this.id = visitatore.id;
@@ -17,7 +18,8 @@ Visitatore.findById = (id, result) => {
         }
 
         if(res.length){
-            console.log("visitatore trovato: ", res[0]);
+            console.log("visitatore trovato: ", res[0])
+            res[0].visitTime = utils.visitTime(res[0].inizio_visita, res[0].fine_visita);
             result(null, res[0])
             return
         }
