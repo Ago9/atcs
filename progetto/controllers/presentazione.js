@@ -10,8 +10,8 @@ exports.findByUser = (req, res) => {
                     err.message || "Some error occurred while retrieving customers."
             });
         else 
-          res.send(data);
-          //  res.render('presentazioni', { title: 'presentazioni', visitatori: data})
+           res.send(data);
+          //res.render('statistiche', {presentazioni: data})
         
     });
 }

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+
+    h1 presentazioni
+    
+    lu
+        each pres in presentazioni
+
+            li  #{pres.nome}
+                 
+    h1 posizione
+
+    lu
+        each poi in posizioni
+
+            li #{poi.id}  
+
+

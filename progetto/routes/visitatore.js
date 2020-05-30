@@ -3,6 +3,7 @@ var router = express.Router();
 var visitatore = require("../controllers/visitatore.js");
 var presentazione = require("../controllers/presentazione.js");
 var posizione = require("../controllers/posizione.js");
+var statistiche = require("../controllers/statistiche.js")
 
 // trova visitatori
 router.get("/", visitatore.findAll);
@@ -25,7 +26,7 @@ router.get("/:id", visitatore.findOne);
 // gestisci la form di selezione del visitatore
 // router.post("/select", visitatore.form);
 
-router.post("/select", posizione.findByUser);
+router.post("/select", statistiche.stasts);
 /* router.post("/select", function(req, res) {
     console.log(req.body.visitors);
     var prova = presentazione.findByUser(req.body.visitors);
