@@ -17,10 +17,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/javascripts', express.static(__dirname + '/javascripts'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/visitatore', visitatoreRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
