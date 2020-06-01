@@ -1,7 +1,9 @@
 extends layout
 
 block content
-    h1=title
+
+    header(class='parallax')
+        h1= "Visitors"
 
     form(method='POST', action='/visitatore/select')
         select(name = 'visitors')

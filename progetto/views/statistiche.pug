@@ -8,18 +8,31 @@ html
     body
         block content
 
+            header(class='parallax')
+                 h1= "Single visitor's stats"
+
             h1 Visitor <b>#{visitatori.id}</b> 
+            br
             h3 part of group <b>#{visitatori.gruppo}</b> that visited in data: <b>#{visitatori.data}</b>
             h3 total time spent into the museum: #{visitatori.visitTime}
 
-            h1 presentazioni
+            br
+            br
+
+            h1 Presentations
+            br
 
             lu
                 each pres in presentazioni
 
                     li  #{pres.nome} #{pres.paused}
 
-            h1 posizione
+            br
+            br
+
+            h1 Positions
+
+            br
 
             lu
                 each poi in posizioni

@@ -1,6 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Asap:400,500,700');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*padding: 50px;*/
+  background: #24272E !important;
+  color: rgba(255, 255, 255, 255);
+  text-align: center;
+  font-family: Asap, sans-serif;
+}
+
+header {
+	height: 50px !important;
+}
+
+header > h1 {
+	color: rgba(255, 255, 255, 255);
+	text-align: center;
+	font-family: Asap, sans-serif;
 }
 
 a {
@@ -21,3 +42,121 @@ div.tooltip {
   pointer-events: none;			
 }
 
+.simulationButton {
+	margin: 20px auto;
+	border: 3px solid white;
+	padding: 20px 20px;
+	text-align: center;
+	font-family: Asap, sans-serif;
+	font-weight: bold;
+	transition: all 0.3s ease;
+	color: #24272E;
+	opacity: 0.5;
+
+}
+
+.simulationButton:hover {
+	cursor: pointer;
+	background: #202020;  /* #4267B2 facebook color */
+	color: #202020;
+	opacity: 0.9;
+}
+
+.overImageText {
+	position: absolute;
+	text-align: center;
+	font-size: 100px;
+	top: 55px;
+	right: 0px;
+}
+
+.simulationDescription{
+	font-family: Asap, sans-serif;
+	font-weight: bold;
+	text-align: left;
+	font-size: 35px;
+	color: white;
+	margin-top: 90px;
+	margin-left: 20px;
+}
+
+.statsButton {
+	font-size: 30px;
+	color: white;
+	font-family: Asap, sans-serif;
+	font-weight: bold;
+	padding: 2px 10px;
+	border: 3px solid white;
+	padding: 15px 20px;
+	width: 300px;
+	text-align: center;
+	transition: all 0.3s ease;
+}
+
+.statsButton:hover {
+	cursor: pointer;
+	background: #202020;
+	color: #FF9933;
+}
+
+.buttonDescription {
+	font-family: Asap, sans-serif;
+	font-size: 30px;
+	color: white;
+	text-align: left;
+}
+
+.groupButton{
+	font-size: 30px;
+	color: white;
+	font-family: Asap, sans-serif;
+	font-weight: bold;
+	padding: 2px 10px;
+	border: 3px solid white;
+	width: 100px;
+	text-align: center;
+	color: #24272E;
+	transition: all 0.3s ease;
+}
+
+.homeButton {
+	border: 3px solid white;
+	padding: 5px 10px;
+	width: 90px;
+	text-align: center;
+	font-size: 18px;
+	color: white;
+	font-family: Asap, sans-serif;
+	font-weight: bold;
+	position: absolute;
+	transition: all 0.3s ease;
+	left: 10px;
+}
+
+.homeButton:hover{
+	cursor: pointer;
+	background: #202020;
+	color: #FF9933;
+}
+
+.top-margin{
+	margin-top: 50px;
+}
+
+.bottom-margin{
+	margin-bottom: 50px;
+}
+
+.parallax {
+  background-image: url("../images/museum.jpg");
+  height: 150px;
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.short{
+	height: 20px !important;
+}
