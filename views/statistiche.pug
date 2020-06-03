@@ -11,10 +11,13 @@ html
             header(class='parallax')
                  h1= "Single visitor's stats"
 
-            h1 Visitor <b>#{visitatori.id}</b> 
             br
-            h3 part of group <b>#{visitatori.gruppo}</b> that visited in data: <b>#{visitatori.data}</b>
-            h3 total time spent into the museum: #{visitatori.visitTime}
+            br
+
+            h1 Visitor <b style="color:#FF9933;">#{visitatori.id}</b> 
+            br
+            h3 Part of group <b style="color:#FF9933;">#{visitatori.gruppo}</b> that visited in data: <b style="color:#FF9933;">#{visitatori.data}</b>
+            h3 Total time spent into the museum: <b style="color:#FF9933;">#{visitatori.visitTime}</b>
 
             br
             br
@@ -29,8 +32,7 @@ html
                 var obj = !{JSON.stringify(posizioni)}
                 drawTimeline(obj)
 
-            br 
-            h1 Presentations
+            h1(style= "color:#FF9933;") Presentations
             br
 
             lu
@@ -41,7 +43,7 @@ html
             br
             br
 
-            h1 Positions
+            h1(style= "color:#FF9933;") Positions
 
             br
 
@@ -49,3 +51,6 @@ html
                 each poi in posizioni
 
                     li #{poi.id}  from <b>#{poi.inizio}</b> to <b>#{poi.fine}</b>
+        br
+        br
+        div(class="parallax")

@@ -9,5 +9,5 @@ function toVisitorsPage() {
 }
 
 function toStatsPage() {
-    document.location.href='/';
+    document.location.href='/statistiche';
 }
