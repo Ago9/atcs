@@ -1,5 +1,27 @@
 extends layout
 
 block content
+    link(rel='stylesheet', href='/stylesheets/style.css')
     header(class='parallax')
         h1= "General Statistics of the Museum"
+ 
+    br
+    h1(style="color:#FF9933;") Visitors per hour
+    lu
+        each count in countPerHour
+
+            li  Hour:  <b style="color:#FF9933;">#{count.ora}</b>  Visitors:   <b style="color:#FF9933;">#{count.count}</b>
+
+    br
+    br
+    h1(style="color:#FF9933;") Points of Interest
+
+    lu
+        each poiCount, poi in posizionePerHour
+            li(style="color:#FF9933;") #{poi}
+            lu
+            each count in poiCount
+                li Hour:  <b style="color:#FF9933;">#{count.ora}</b>  Visitors:   <b style="color:#FF9933;">#{count.count}</b>
+            br
+    br
+    div(class="parallax")

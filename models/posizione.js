@@ -14,8 +14,17 @@ Posizione.findByUser = (id, result) => {
             result(err, null);
             return;
         }
+        result(null, res);
+    })
+}
 
-        //console.log("Presentations:", res);
+Posizione.countPerHour = (result) => {
+    sql.query("SELECT COUNT(id) as count, HOUR(inizio) as ora, id FROM posizione GROUP BY HOUR(inizio), id ORDER BY id", (err, res) => {
+        if(err){
+            console.log("error:", err)
+            result(err, null);
+            return;
+        }
         result(null, res);
     })
 }

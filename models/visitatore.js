@@ -39,4 +39,17 @@ Visitatore.findAll = result => {
     })
 }
 
+Visitatore.countPerHour = result => {
+    sql.query("SELECT COUNT(id) as count, HOUR(inizio_visita) as ora FROM visitatore GROUP BY HOUR(inizio_visita) ORDER BY ora", (err, res) => {
+        if(err){
+            console.log("error:", err)
+            result(err, null);
+            return;
+        }
+
+        console.log("Average number of visitors per Date:", res);
+        result(null, res);
+    })
+}
+
 module.exports = Visitatore;
