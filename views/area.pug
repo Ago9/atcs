@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+    header(class='parallax')
+        h1= "mappa"
+
+        form(method='POST', action='/area/select/')
+            select(name = 'visitors')
+                each vis in visitatori
+                    option(value=vis.id) #{vis.id}
+        
+            input(type='submit', value='submit')
+        
+            

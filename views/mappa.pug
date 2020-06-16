@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        title replay a visit
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src='https://d3js.org/d3.v5.min.js')
+
+    body
+        block content
+
+            header(class='parallax')
+    
+    
+            script(src="/javascripts/map.js")
+
+            script. 
+                var obj = !{JSON.stringify(coordinate)}
+                drawCircle(obj)
+
+            

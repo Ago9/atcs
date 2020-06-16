@@ -7,6 +7,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var visitatoreRouter = require('./routes/visitatore');
 var statisticsRouter = require('./routes/statistiche');
+var areaRouter = require('./routes/area_museo');
 
 var app = express();
 
@@ -19,11 +20,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/javascripts', express.static(__dirname + '/javascripts'));
+app.use('/images', express.static(__dirname + '/images'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/visitatore', visitatoreRouter);
 app.use('/statistiche', statisticsRouter);
+app.use('/area', areaRouter);
 
 
 // catch 404 and forward to error handler
