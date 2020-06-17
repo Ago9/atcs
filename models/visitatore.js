@@ -47,9 +47,9 @@ Visitatore.countPerHour = result => {
             return;
         }
 
-        console.log("Average number of visitors per Date:", res);
         result(null, res);
     })
 }
+
 
 module.exports = Visitatore;

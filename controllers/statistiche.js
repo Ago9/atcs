@@ -74,6 +74,17 @@ exports.generalStats = function(req, res){
                     callback(null, data);
             });
         },
+        visitorsPerPoi: function(callback){
+            Posizione.visitorsPerPoi((err,data) => {
+                if(err)
+                res.status(500).send({
+                    message: 
+                        err.message || "Some error occurred while retrieving customers."
+                }); 
+                else
+                    callback(null, data);
+            });
+        },
         /*visitatore: function(callback){
             Visitatore.findById(req.body.visitors, (err,data) => {
                 if(err)
@@ -94,8 +105,12 @@ exports.generalStats = function(req, res){
                 objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
                 return objectsByKeyValue;
               }, {});
-
-              res.render('generalStats', { title: "General Statistics of the Museum", countPerHour: results.visitatoriPerHour, posizionePerHour: poiPerHour });
+              const visitorsPerPoi = results.visitorsPerPoi.reduce((objectsByKeyValue, obj) => {
+                const value = obj['id'];
+                objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
+                return objectsByKeyValue;
+              }, {});
+              res.render('generalStats', { title: "General Statistics of the Museum", countPerHour: results.visitatoriPerHour, visitorsPerPoi: visitorsPerPoi, posizionePerHour: poiPerHour });
 
         }
 

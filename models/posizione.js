@@ -29,4 +29,15 @@ Posizione.countPerHour = (result) => {
     })
 }
 
+Posizione.visitorsPerPoi = (result) => {
+    sql.query("SELECT id, COUNT(id) as count, AVG(((HOUR(fine)*60)+MINUTE(fine))-((HOUR(inizio)*60)+MINUTE(inizio))) as durata FROM posizione GROUP BY id ORDER BY id", (err, res) => {
+        if(err){
+            console.log("error:", err)
+            result(err, null);
+            return;
+        }
+        result(null, res);
+    })
+}
+
 module.exports = Posizione;
