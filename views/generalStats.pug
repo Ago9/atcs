@@ -6,7 +6,7 @@ block content
         h1= "General Statistics of the Museum"
 
     div(class='container bottom-margin')
-    div(class='row top-margin')
+    div(class='row top-margin left-text left-margin')
 
         div(class='col-6')
             br
@@ -14,7 +14,7 @@ block content
             lu
             each count in countPerHour
 
-                li  Hour:  <b style="color:#FF9933;">#{count.ora}</b>  Visitors:   <b style="color:#FF9933;">#{count.count}</b>
+                li  From  <b style="color:#FF9933;">#{count.ora}</b>  to  <b style="color:#FF9933;">#{count.ora+1}</b>  Visitors:   <b style="color:#FF9933;">#{count.count}</b>
             br
             br
             h1(style="color:#FF9933;") Attraction and Holding Power of POIs
@@ -25,7 +25,7 @@ block content
                 lu
                 each count in item
                     li Visitors in Total:  <b style="color:#FF9933;">#{count.count}</b>
-                    li For:  <b style="color:#FF9933;">#{count.durata}</b> minutes (on average)
+                    li For:  <b style="color:#FF9933;">#{count.durata.toFixed(2)}</b> seconds (on average)
                 br
             br
       

@@ -40,7 +40,7 @@ Visitatore.findAll = result => {
 }
 
 Visitatore.countPerHour = result => {
-    sql.query("SELECT COUNT(id) as count, HOUR(inizio_visita) as ora FROM visitatore GROUP BY HOUR(inizio_visita) ORDER BY ora", (err, res) => {
+    sql.query("SELECT COUNT(id) as count, HOUR(inizio_visita) as ora FROM visitatore GROUP BY ora ORDER BY ora", (err, res) => {
         if(err){
             console.log("error:", err)
             result(err, null);

@@ -134,6 +134,14 @@ div.tooltip {
 	margin-bottom: 50px;
 }
 
+.left-margin{
+	margin-left: 50px;
+}
+
+.right-margin{
+	margin-right: 50px;
+}
+
 .parallax {
   background-image: url("../images/museum.jpg");
   height: 150px;
@@ -159,4 +167,8 @@ div.tooltip {
 
 .large{
 	height: 165px !important;;
+}
+
+.left-text {
+	text-align: left !important;
 }
