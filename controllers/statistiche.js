@@ -63,6 +63,18 @@ exports.generalStats = function(req, res){
             });
         
         },
+        visitatoriPerRoomPerHour: function(callback){
+            Posizione.countPerRoomPerHour((err, data) => {
+                if(err)
+                    res.status(500).send({
+                        message: 
+                            err.message || "Some error occurred while retrieving customers."
+                    }); 
+                else
+                    callback(null, data);
+            });
+        
+        },
         posizionePerHour: function(callback){
             Posizione.countPerHour((err,data) => {
                 if(err)
@@ -110,7 +122,7 @@ exports.generalStats = function(req, res){
                 objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj);
                 return objectsByKeyValue;
               }, {});
-              res.render('generalStats', { title: "General Statistics of the Museum", countPerHour: results.visitatoriPerHour, visitorsPerPoi: visitorsPerPoi, posizionePerHour: poiPerHour });
+              res.render('generalStats', { title: "General Statistics of the Museum", countPerHour: results.visitatoriPerHour, visitorsPerPoi: visitorsPerPoi, posizionePerHour: poiPerHour, countPerRoomPerHour: results.visitatoriPerRoomPerHour});
 
         }
 

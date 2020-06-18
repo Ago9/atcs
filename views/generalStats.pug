@@ -17,6 +17,13 @@ block content
                 li  From  <b style="color:#FF9933;">#{count.ora}</b>  to  <b style="color:#FF9933;">#{count.ora+1}</b>  Visitors:   <b style="color:#FF9933;">#{count.count}</b>
             br
             br
+            h1(style="color:#FF9933;") Visitors per Room per hour
+            lu
+            each count in countPerRoomPerHour
+
+                li   Room: <b style="color:#FF9933;">#{count.stanza}</b>  From  <b style="color:#FF9933;">#{count.ini}</b>  to  <b style="color:#FF9933;">#{count.ini+1}</b>  Visitors:   <b style="color:#FF9933;">#{count.count}</b>
+            br
+            br
             h1(style="color:#FF9933;") Attraction and Holding Power of POIs
 
             lu
