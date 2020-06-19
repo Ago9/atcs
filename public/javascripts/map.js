@@ -46,7 +46,7 @@ function drawCircle(data){
                 .duration(200)		
                 .style("opacity", .9)	
         
-            tool.html( d.nome +"<br/>")	
+            tool.html( "<br/>" + d.nome +"<br/>")	
                 .style("left", (d3.event.pageX) + "px")		
                 .style("top", (d3.event.pageY - 28) + "px");	
             })			

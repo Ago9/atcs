@@ -24,14 +24,26 @@ html
 
             h3 Hold your cursor over the points to see the details
 
-            div(id='timeline')
+            div(id='map')
     
-             script(src="/javascripts/timeline.js")
+             script(src="/javascripts/map.js")
 
             script. 
-                var obj = !{JSON.stringify(posizioni)}
-                drawTimeline(obj)
+                var obj = !{JSON.stringify(coordinate)}
+                drawCircle(obj)
 
+            br
+            br
+
+            div(id="tasti")   
+                button(onclick="start()") start
+                button(onclick="ferma()") stop/resume
+                button(onclick="slow()") slow
+                button(onclick="fast()") fast
+
+            br 
+            br
+        
             h1(style= "color:#FF9933;") Presentations
             br
 

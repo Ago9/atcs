@@ -1,6 +1,7 @@
 var Presentazione = require("../models/presentazione.js");
 var Posizione = require("../models/posizione.js");
 var Visitatore = require("../models/visitatore.js");
+var Area_museo = require("../models/area_museo.js")
 var async = require("async");
 
 exports.stasts = function(req, res){
@@ -38,12 +39,22 @@ exports.stasts = function(req, res){
                 else
                     callback(null, data);
             });
+        },
+        coordinate: function(callback){
+            Area_museo.findById(req.body.visitors, (err, data) => {
+                if (err) {
+                    res.status(500).send({
+                      message: "Error retrieving Customer with id " 
+                    });
+                  }else
+                        callback(null,data);
+            })
         }
     }, function(err, results){
         if(err) return err;
 
         else
-            res.render('statistiche', { visitatori: results.visitatore, posizioni: results.posizione, presentazioni: results.presentazione})
+            res.render('statistiche', { visitatori: results.visitatore, posizioni: results.posizione, presentazioni: results.presentazione, coordinate: results.coordinate})
 
     });
 }
