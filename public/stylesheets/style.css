@@ -3,15 +3,15 @@
 * {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+	box-sizing: border-box !important;
 }
 
 body {
   /*padding: 50px;*/
   background: #24272E !important;
-  color: rgba(255, 255, 255, 255);
-  text-align: center;
-  font-family: Asap, sans-serif;
+  color: rgba(255, 255, 255, 255)!important;
+  text-align: center!important;
+  font-family: Asap, sans-serif !important;
 }
 
 header {
@@ -171,4 +171,19 @@ div.tooltip {
 
 .left-text {
 	text-align: left !important;
+}
+
+.axis {
+	font: 15px sans-serif;
+	fill: white;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+.table{
+	text-align: center;
 }

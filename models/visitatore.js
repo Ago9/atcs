@@ -27,7 +27,7 @@ Visitatore.findById = (id, result) => {
 };
 
 Visitatore.findAll = result => {
-    sql.query("SELECT * FROM visitatore", (err, res) => {
+    sql.query("SELECT  distinct vis.id FROM visitatore as vis join posizione on vis.id=user_id", (err, res) => {
         if(err){
             console.log("error:", err)
             result(err, null);
@@ -40,7 +40,7 @@ Visitatore.findAll = result => {
 }
 
 Visitatore.countPerHour = result => {
-    sql.query("SELECT COUNT(id) as count, HOUR(inizio) as ora FROM posizione GROUP BY ora ORDER BY ora", (err, res) => {
+    sql.query("select count(*) as count, ora from (SELECT distinct user_id, hour(inizio) as ora FROM posizione order by ora) as x group by ora", (err, res) => {
         if(err){
             console.log("error:", err)
             result(err, null);

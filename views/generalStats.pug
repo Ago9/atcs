@@ -1,52 +1,83 @@
-extends layout
+doctype html
+html
+    head
+        title Museum Statistics
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js')
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
+        script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js', integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n', crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo', crossorigin='anonymous')
+        script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js', integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6', crossorigin='anonymous')
 
-block content
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    header(class='parallax')
-        h1= "General Statistics of the Museum"
 
-    div(class='container bottom-margin')
-    div(class='row top-margin left-text left-margin')
+    body
+        block content
+            link(rel='stylesheet', href='/stylesheets/style.css')
+            header(class='parallax')
+                h1= "General Statistics of the Museum"
 
-        div(class='col-6')
             br
-            h1(style="color:#FF9933;") Visitors per hour
-            lu
-            each count in countPerHour
+            div(class='container bottom-margin')
+                div(class='row top-margin left-margin')
+                    div(class='col-11')
+                        h1(style="color:#FF9933;") Visitors per hour in general
+                    div(class='col-12')
+                        div(id='map')
 
-                li  From  <b style="color:#FF9933;">#{count.ora}</b>  to  <b style="color:#FF9933;">#{count.ora+1}</b>  Visitors:   <b style="color:#FF9933;">#{count.count}</b>
-            br
-            br
-            h1(style="color:#FF9933;") Visitors per Room per hour
-            lu
-            each count in countPerRoomPerHour
+                         script(src="/javascripts/visitorsPerHour.js")
 
-                li   Room: <b style="color:#FF9933;">#{count.stanza}</b>  From  <b style="color:#FF9933;">#{count.ini}</b>  to  <b style="color:#FF9933;">#{count.ini+1}</b>  Visitors:   <b style="color:#FF9933;">#{count.count}</b>
-            br
-            br
-            h1(style="color:#FF9933;") Attraction and Holding Power of POIs
+                        script. 
+                            var obj = !{JSON.stringify(countPerHour)}
+                            drawGraph(obj)
+                    
+            div(class='container bottom-margin')
+                div(class='row top-margin')
+                    div(class='col-5')
+                        h1(style="color:#FF9933;") Visitors per Room per hour
+                        br
+                        div
+                            table(class="table")
+                                tr
+                                    th <b style="color:#FF9933;">Room</b>
+                                    th <b style="color:#FF9933;">Period</b>
+                                    th <b style="color:#FF9933;">Visitors</b>  
+                                each count in countPerRoomPerHour
+                                    tr
+                                        td <b style="color:white;">#{count.stanza}</b>
+                                        td <b style="color:white;">#{count.ini} - #{count.ini+1}</b>
+                                        td <b style="color:white;">#{count.count}</b>
+                    div(class='col-2')
+                    div(class='col-5')
+                        h1(style="color:#FF9933;") Attraction and Holding Power of POIs
+                        br
+                        div
+                            table(class="table")
+                                tr
+                                    th <b style="color:#FF9933;">Poi</b>
+                                    th <b style="color:#FF9933;">Visitors</b>
+                                    th <b style="color:#FF9933;">Time (seconds)</b> 
+                                each item,poi in visitorsPerPoi
+                                    tr
+                                        td <b style="color:white;">#{poi}</b>
+                                        each count in item
+                                            td <b style="color:white;">#{count.count}</b>
+                                            td <b style="color:white;">#{count.durata.toFixed(2)}</b>
+                        br
+                        br
+                div(class='row top-margin')
+                    div(class='col-3')
+                    div(class='col-6')
+                        h1(style="color:#FF9933;") Statistics about Pois
+                        each poiCount, poi in posizionePerHour
+                            p(style="color:#FF9933;") #{poi}
+                                table(class="table")
+                                    tr
+                                        th <b style="color:#FF9933;">Period</b>
+                                        th <b style="color:#FF9933;">Visitors</b>
+                                    each count in poiCount
+                                        tr
+                                            td <b style="color:white;">#{count.ora} - #{count.ora+1}</b>
+                                            td <b style="color:white;">#{count.count}</b>
+                    div(class='col-3')
 
-            lu
-            each item, poi in visitorsPerPoi
-                li(style="color:#FF9933;") #{poi}
-                lu
-                each count in item
-                    li Visitors in Total:  <b style="color:#FF9933;">#{count.count}</b>
-                    li For:  <b style="color:#FF9933;">#{count.durata.toFixed(2)}</b> seconds (on average)
-                br
-            br
-      
-        div(class='col-6')
-        
-            h1(style="color:#FF9933;") Points of Interest
-
-            lu
-            each poiCount, poi in posizionePerHour
-                li(style="color:#FF9933;") #{poi}
-                lu
-                each count in poiCount
-                    li From  <b style="color:#FF9933;">#{count.ora}</b>  to  <b style="color:#FF9933;">#{count.ora +1}</b>  Visitors:   <b style="color:#FF9933;">#{count.count}</b>
-                br
-            br
-
-    div(class="parallax")
+            div(class="parallax")

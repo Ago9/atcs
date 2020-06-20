@@ -4,12 +4,13 @@ html
         title Statistics
         link(rel='stylesheet', href='/stylesheets/style.css')
         script(src='https://d3js.org/d3.v5.min.js')
+        link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css', integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
 
     body
         block content
 
             header(class='parallax')
-                 h1= "Single visitor's stats"
+                 h1= "Statistics about a single visitor"
 
             br
             br
@@ -23,6 +24,8 @@ html
             br
 
             h3 Hold your cursor over the points to see the details
+
+            br
 
             div(id='map')
     
@@ -45,24 +48,32 @@ html
             br
         
             h1(style= "color:#FF9933;") Presentations
-            br
+            div(class='container bottom-margin')
+                div(class='row top-margin left-margin') 
+                    div(class='col-4')
+                    div(class='col-4')
+                        table(class="table")
+                            each pres in presentazioni
+                                tr
+                                    td(style="color:white;") #{pres.nome} <b style="color:#FF9933;">#{pres.paused}</b>
+                    div(class='col-4')
+                
+            div(class='container bottom-margin')
+                div(class='row top-margin left-margin')
+                    div(class='col-2')
+                    div(class='col-8')
+                        h1(style= "color:#FF9933;") Positions
 
-            lu
-                each pres in presentazioni
-
-                    li  #{pres.nome} #{pres.paused}
-
-            br
-            br
-
-            h1(style= "color:#FF9933;") Positions
-
-            br
-
-            lu
-                each poi in posizioni
-
-                    li #{poi.id}  from <b>#{poi.inizio}</b> to <b>#{poi.fine}</b>
-        br
-        br
+                        br
+                        table(class="table")
+                            tr
+                                th <b style="color:#FF9933;">Poi</b>
+                                th <b style="color:#FF9933;">Start</b>
+                                th <b style="color:#FF9933;">End</b> 
+                            each poi in posizioni
+                                tr
+                                    td <b style="color:white;">#{poi.id}</b>
+                                    td <b style="color:white;">#{poi.inizio}</b>
+                                    td <b style="color:white;">#{poi.fine}</b>
+                    div(class='col-2')
         div(class="parallax")
