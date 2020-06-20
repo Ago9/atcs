@@ -49,12 +49,23 @@ exports.stasts = function(req, res){
                   }else
                         callback(null,data);
             })
-        }
+        },
+        average: function(callback){
+            Visitatore.getAverageTime((err,data) => {
+                if(err)
+                res.status(500).send({
+                    message: 
+                        err.message || "Some error occurred while retrieving customers."
+                }); 
+                else
+                    callback(null, data);
+            });
+        },
     }, function(err, results){
         if(err) return err;
 
         else
-            res.render('statistiche', { visitatori: results.visitatore, posizioni: results.posizione, presentazioni: results.presentazione, coordinate: results.coordinate})
+            res.render('statistiche', { visitatori: results.visitatore, posizioni: results.posizione, presentazioni: results.presentazione, coordinate: results.coordinate, average: results.average});
 
     });
 }

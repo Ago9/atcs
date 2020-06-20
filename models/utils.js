@@ -38,3 +38,9 @@ exports.toHours = function(time) {
     
     return hours + ":" + minutes;  
 }
+
+exports.toMinutes = function(time) {
+    hours = time.split(":");
+    
+    return (parseInt(hours[0]) * 60) + parseInt(hours[1]); 
+}

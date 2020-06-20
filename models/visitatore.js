@@ -5,8 +5,8 @@ var Visitatore = function(visitatore){
     this.id = visitatore.id;
     this.gruppo = visitatore.gruppo;
     this.data = visitatore.data;
-    this.ora_inzio = visitatore.ora_inzio;
-    this.ora_fine = visitatore.ora_fine;
+    this.inizio_visita = visitatore.inizio_visita;
+    this.fine_visita = visitatore.fine_visita;
 }
 
 Visitatore.findById = (id, result) => {
@@ -49,6 +49,26 @@ Visitatore.countPerHour = result => {
 
         result(null, res);
     })
+}
+
+
+Visitatore.getAverageTime = result => {
+    sql.query("select * from visitatore", (err, res) => {
+        if(err){
+            console.log("error:", err)
+            result(err, null);
+            return;
+        }
+        
+        var averagetime = 0;
+
+        for(let i = 0; i < res.length; i++) {
+            averagetime += parseInt(utils.toMinutes(utils.visitTime(res[i].inizio_visita, res[i].fine_visita)));
+        }
+        
+        res[0].average = utils.toHours(parseInt(averagetime / res.length));
+        result(null, res[0]);
+    }) 
 }
 
 
