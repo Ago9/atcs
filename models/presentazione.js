@@ -24,7 +24,7 @@ Presentazione.findByUser = (id, result) => {
                 var count = utils.countOccurrence(res, res[i].nome) - 1;
 
                 if (count > 0)
-                    res[i].paused = "paused " + count + " times";
+                    res[i].paused = "paused " + count + " time(s)";
                 present[res[i].nome] = true;
                 ris[i] = res[i];
             }
