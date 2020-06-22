@@ -61,11 +61,22 @@ exports.stasts = function(req, res){
                     callback(null, data);
             });
         },
+        presentationAverage: function(callback){
+            Presentazione.getAverage((err,data) => {
+                if(err)
+                res.status(500).send({
+                    message: 
+                        err.message || "Some error occurred while retrieving customers."
+                }); 
+                else
+                    callback(null, data);
+            });
+        },
     }, function(err, results){
         if(err) return err;
 
         else
-            res.render('statistiche', { visitatori: results.visitatore, posizioni: results.posizione, presentazioni: results.presentazione, coordinate: results.coordinate, average: results.average});
+            res.render('statistiche', { visitatori: results.visitatore, posizioni: results.posizione, presentazioni: results.presentazione, coordinate: results.coordinate, average: results.average, presentationAverage: results.presentationAverage});
 
     });
 }

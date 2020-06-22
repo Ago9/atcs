@@ -1,8 +1,20 @@
-exports.countOccurrence = function(array, element) {
+exports.countNameOccurrence = function(array, element) {
     var count = 0;
   
     for (let i = 0; i < array.length; i++) {
         if (array[i].nome == element) {
+          count++;
+        }
+    }
+  
+    return count;
+}
+
+exports.countIdOccurrence = function(array, element) {
+    var count = 0;
+  
+    for (let i = 0; i < array.length; i++) {
+        if (array[i].id == element) {
           count++;
         }
     }
