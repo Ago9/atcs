@@ -119,17 +119,6 @@ exports.generalStats = function(req, res){
                     callback(null, data);
             });
         },
-        /*visitatore: function(callback){
-            Visitatore.findById(req.body.visitors, (err,data) => {
-                if(err)
-                res.status(500).send({
-                    message: 
-                        err.message || "Some error occurred while retrieving customers."
-                }); 
-                else
-                    callback(null, data);
-            });
-        }*/
     }, function(err, results){
         if(err) return err;
 

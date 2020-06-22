@@ -14,13 +14,13 @@ html
         block content
             link(rel='stylesheet', href='/stylesheets/style.css')
             header(class='parallax')
-                h1= "General Statistics of the Museum"
+                h1= "General Statistics about the Museum"
 
             br
             div(class='container bottom-margin')
                 div(class='row top-margin left-margin')
                     div(class='col-11')
-                        h1(style="color:#FF9933;") Visitors per hour in general
+                        h1(style="color:#FF9933;") Visitors per Hour in general
                     div(class='col-12')
                         div(id='map')
 
@@ -29,31 +29,127 @@ html
                         script. 
                             var obj = !{JSON.stringify(countPerHour)}
                             drawGraph(obj)
+
+            div(class='container bottom-margin')
+                div(class='row top-margin left-margin')
+                    div(class='col-11')
+                        h1(style="color:#FF9933;") Visitors per Room per Hour
+                    div(class='col-6')
+
+                        - var stanza = 1;
+                        each item in countPerRoomPerHour
+                            if stanza == 1
+                                if item.stanza == 1
+                                    div(id='map')
+
+                                     script(src="/javascripts/visitorsPerRoomPerHour.js")
+
+                                    script. 
+                                        var domain = !{JSON.stringify(countPerRoomPerHour.slice(0, 5))}                      
+                                        drawGraph(domain)
+                                        addLabel("Room 1")
+                                    div(class='col-11')
+                                    - stanza = 0;
+                    div(class='col-6')
+
+                        - var stanza = 1;
+                        each item in countPerRoomPerHour
+                            if stanza == 1
+                                if item.stanza == 2
+                                    div(id='map')
+
+                                     script(src="/javascripts/visitorsPerRoomPerHour.js")
+
+                                    script. 
+                                        var domain = !{JSON.stringify(countPerRoomPerHour.slice(6, 10))}                      
+                                        drawGraph(domain)
+                                        addLabel("Room 2")
+                                    - stanza = 0;
+                    div(class='col-6')
+
+                        - var stanza = 1;
+                        each item in countPerRoomPerHour
+                            if stanza == 1
+                                if item.stanza == 3
+                                    div(id='map')
+
+                                     script(src="/javascripts/visitorsPerRoomPerHour.js")
+
+                                    script. 
+                                        var domain = !{JSON.stringify(countPerRoomPerHour.slice(7, 16))}                      
+                                        drawGraph(domain)
+                                        addLabel("Room 3")
+                                    - stanza = 0;
+                    div(class='col-6')
+
+                        - var stanza = 1;
+                        each item in countPerRoomPerHour
+                            if stanza == 1
+                                if item.stanza == 4
+                                    div(id='map')
+
+                                     script(src="/javascripts/visitorsPerRoomPerHour.js")
+
+                                    script. 
+                                        var domain = !{JSON.stringify(countPerRoomPerHour.slice(17, 21))}                      
+                                        drawGraph(domain)
+                                        addLabel("Room 4")
+                                    - stanza = 0;
+                    div(class='col-6')
+
+                        - var stanza = 1;
+                        each item in countPerRoomPerHour
+                            if stanza == 1
+                                if item.stanza == 5
+                                    div(id='map')
+
+                                     script(src="/javascripts/visitorsPerRoomPerHour.js")
+
+                                    script. 
+                                        var domain = !{JSON.stringify(countPerRoomPerHour.slice(22, 27))}                      
+                                        drawGraph(domain)
+                                        addLabel("Room 5")
+                                    - stanza = 0;
+                    div(class='col-6')
+
+                        - var stanza = 1;
+                        each item in countPerRoomPerHour
+                            if stanza == 1
+                                if item.stanza == 6
+                                    div(id='map')
+
+                                     script(src="/javascripts/visitorsPerRoomPerHour.js")
+
+                                    script. 
+                                        var domain = !{JSON.stringify(countPerRoomPerHour.slice(27, 33))}                      
+                                        drawGraph(domain)
+                                        addLabel("Room 6")
+                                    - stanza = 0;
+                    div(class='col-12')
+
+                        - var stanza = 1;
+                        each item in countPerRoomPerHour
+                            if stanza == 1
+                                if item.stanza == 7
+                                    div(id='map')
+                                     script(src="/javascripts/visitorsPerRoomPerHour.js")
+
+                                    script. 
+                                        var domain = !{JSON.stringify(countPerRoomPerHour.slice(34, 39))}                      
+                                        drawGraph(domain)
+                                        addLabel("Room 7")
+                                    - stanza = 0;
                     
             div(class='container bottom-margin')
                 div(class='row top-margin')
-                    div(class='col-5')
-                        h1(style="color:#FF9933;") Visitors per Room per hour
-                        br
-                        div
-                            table(class="table")
-                                tr
-                                    th <b style="color:#FF9933;">Room</b>
-                                    th <b style="color:#FF9933;">Period</b>
-                                    th <b style="color:#FF9933;">Visitors</b>  
-                                each count in countPerRoomPerHour
-                                    tr
-                                        td <b style="color:white;">#{count.stanza}</b>
-                                        td <b style="color:white;">#{count.ini} - #{count.ini+1}</b>
-                                        td <b style="color:white;">#{count.count}</b>
-                    div(class='col-2')
-                    div(class='col-5')
+                    div(class='col-3')
+                    div(class='col-6')
                         h1(style="color:#FF9933;") Attraction and Holding Power of POIs
                         br
                         div
                             table(class="table")
                                 tr
-                                    th <b style="color:#FF9933;">Poi</b>
+                                    th <b style="color:#FF9933;">POI</b>
                                     th <b style="color:#FF9933;">Visitors</b>
                                     th <b style="color:#FF9933;">Time (seconds)</b> 
                                 each item,poi in visitorsPerPoi
@@ -62,12 +158,12 @@ html
                                         each count in item
                                             td <b style="color:white;">#{count.count}</b>
                                             td <b style="color:white;">#{count.durata.toFixed(2)}</b>
-                        br
-                        br
+                    div(class='col-3')
+
                 div(class='row top-margin')
                     div(class='col-3')
                     div(class='col-6')
-                        h1(style="color:#FF9933;") Statistics about Pois
+                        h1(style="color:#FF9933;") Statistics about POIs
                         each poiCount, poi in posizionePerHour
                             p(style="color:#FF9933;") #{poi}
                                 table(class="table")
@@ -80,4 +176,5 @@ html
                                             td <b style="color:white;">#{count.count}</b>
                     div(class='col-3')
 
+                            
             div(class="parallax")

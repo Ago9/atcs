@@ -1,4 +1,4 @@
-var margin = {top: 20, right: 100, bottom: 70, left: 40},
+var margin = {top: 40, right: 100, bottom: 70, left: 40},
     width = 500 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
@@ -22,22 +22,9 @@ var svg = d3.select("body").append("svg")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
 
-function addLabel(label){
-  svg.append("g")
-      .attr("class", "label")
-    .append("text")
-      .attr("y", -25)
-      .attr("x", 350)
-      .attr("dy", ".71em")
-      .style("fill", "#FF9933")
-      .style("font-size", "15px")
-      .style("text-anchor", "end")
-      .text(label);
-}
-
 function drawGraph(data) {
 	
-  x.domain(data.map(function(d) { return d.ora; }));
+  x.domain((data.map(function(d) { return d.ini; })).sort());
   y.domain([0, d3.max(data, function(d) { return d.count; })]);
 
   svg.append("g")
@@ -60,8 +47,8 @@ function drawGraph(data) {
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
+      .attr("x", 30)
+      .attr("y", -25)
       .attr("dy", ".71em")
       .style("fill", "white")
       .style("font-size", "15px")
@@ -72,7 +59,7 @@ function drawGraph(data) {
       .data(data)
     .enter().append("rect")
       .style("fill", "#FF9933")
-      .attr("x", function(d) { return x(d.ora); })
+      .attr("x", function(d) { return x(d.ini); })
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.count); })
       .attr("height", function(d) { return height - y(d.count); });
